@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Image, Text, StyleSheet, SafeAreaView, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
 import Voice from '@react-native-community/voice';
 
+
 const App = () => {
 
   const [result, setResult] = useState('')
@@ -52,28 +53,29 @@ const App = () => {
   return (
     <View style={styles.container}>
       <SafeAreaView>
-        <Text style={styles.headingText}>Speech Recoginition</Text>
+        <Text style={styles.headingText}>Dictation App</Text>
         <View style={styles.textInputStyle}>
           <TextInput
+            multiline={true}
+            style={{ color:'black', fontSize: 20, textAlignVertical: 'top' }}
             value={result}
             placeholder="your text"
-            style={{ flex: 1 }}
             onChangeText={text => setResult(text)}
           />
-          {isLoading ? <ActivityIndicator size="large" color="red" />
-
-            :
-            
-            <TouchableOpacity
-              onPress={startRecording}
-            >
-              <Image
-                source={{ uri: 'https://raw.githubusercontent.com/AboutReact/sampleresource/master/microphone.png' }}
-                style={{ width: 25, height: 25 }}
-              />
-            </TouchableOpacity>}
+          
         </View>
+        {isLoading ? <ActivityIndicator size="large" color="red" />
 
+:
+
+<TouchableOpacity
+  onPress={startRecording}
+><Text style={{ fontSize: 50, alignSelf: 'center', marginTop: 25 }}>🎙️</Text>
+  {/* <Image
+    source={{ uri: 'https://raw.githubusercontent.com/AboutReact/sampleresource/master/microphone.png' }}
+    style={{ width: 50, height: 50, alignSelf: 'center', marginTop: 25, backgroundColor: '#888888', borderRadius: 50 }}
+  /> */}
+</TouchableOpacity>}
         <TouchableOpacity
           style={{
             alignSelf: 'center',
@@ -85,7 +87,8 @@ const App = () => {
           onPress={stopRecording}
         >
           <Text style={{ color: 'white', fontWeight: 'bold' }}>Stop</Text>
-        </TouchableOpacity>
+        </TouchableOpacity>       
+        <Text style={{ color: '#888888', fontSize: 20, marginTop: 25 }} >Simple dictation app to record your thoughts, or any other voice-to-text use. Press the microphone icon to convert speech to text, then copy the created text and paste in your email, text, notes, etc. Built with React Native</Text>
       </SafeAreaView>
     </View>
   );
@@ -94,21 +97,23 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 24
+    backgroundColor: '#333333',
+    padding: 40
   },
   headingText: {
     alignSelf: 'center',
     marginVertical: 26,
     fontWeight: 'bold',
+    color: 'violet',
     fontSize: 26
   },
   textInputStyle: {
     flexDirection: 'row',
+    height: 200,
     justifyContent: 'space-between',
-    alignItems: 'center',
     backgroundColor: 'white',
-    height: 48,
-    borderRadius: 20,
+    color: '#000000',
+    borderRadius: 12,
     paddingHorizontal: 16,
     shadowOffset: { width: 0, height: 1 },
     shadowRadius: 2,
